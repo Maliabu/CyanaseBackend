@@ -1,0 +1,544 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.loader-container {
+
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform:
+    translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+.icon_svg svg{
+  height: 80px;
+  width: 80px;
+  padding: 1rem;
+  
+  }
+.ivn {
+  transform: translateY(-50%);
+  top: 50%;
+  position: absolute;
+  left: 0.75rem;
+
+
+}
+
+.lists2 {
+  line-height: 41pt;
+  text-decoration: none;
+}
+
+.lists2 span {
+  font-weight: 600;
+  color: #ff9b00;
+}
+
+.small {
+  color: #828282;
+  font-weight: 400;
+}
+
+.top_bar {
+  margin-left: 21rem;
+
+}
+
+.button {
+  border: solid 3px transparent;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  box-shadow: 2px 1000px 1px #252859 inset;
+  transition: none !important;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+
+  border-radius: 30px;
+  float: right;
+
+}
+
+.get_started {
+
+  z-index: 100;
+  background-color: white;
+
+
+}
+
+.overlap {
+  margin-top: -15rem;
+  z-index: -100;
+}
+
+.dp {
+  /* the magic */
+  display: block;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* the rest */
+  position: relative;
+  /* for the overlay later */
+  margin: 0px auto;
+
+}
+
+.sacco_text {
+  /* the magic */
+  display: block;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* the rest */
+  position: relative;
+
+
+
+}
+
+.sacco_note {
+  z-index: 100;
+  margin-left: -13px;
+  margin-top: -20px;
+  width: 25px;
+  height: 25px;
+}
+
+.top_svg svg {
+
+  width: 30px;
+  height: 30px;
+  z-index: -20;
+}
+
+.note {
+
+  background: #252859;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  text-align: center;
+  margin-top: -25px;
+  margin-left: 15px;
+
+  color: white;
+}
+
+.top_note {
+
+  width: auto;
+  height: 20px;
+  z-index: 100;
+  margin-left: -1rem;
+}
+
+.notes {
+  z-index: 200;
+  height: 20px;
+  width: 20px;
+  margin-top: -3rem;
+  background-color: #252859;
+}
+
+.notez {
+  z-index: 200;
+  height: 20px;
+  width: 20px;
+  background-color:blue;
+}
+
+.cont {
+  margin-top: 2rem;
+  margin-left: 22%;
+}
+
+.conti {
+  margin-top: 2rem;
+  margin-left: 8%;
+}
+
+.notification {
+  margin-left: 20rem;
+  width: 54rem;
+}
+
+.input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: blue;
+}
+
+.my_card {
+
+  text-align: center;
+  height: 100%;
+}
+
+.sacco_stat {
+  text-align: center;
+
+}
+
+.ResHome {
+  display: none;
+}
+
+.lower_part {
+  background-color: #fafafa;
+
+}
+
+.goal-resp {
+  color: #252859;
+
+
+}
+
+.goal-Svg svg {
+
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+}
+
+.recent_row {
+  background-color: #f5f5f5;
+}
+
+.display_none {
+
+  display: none;
+}
+
+.display_yes {
+  display: block;
+
+}
+
+.toper svg {
+
+  width: 80px;
+  height: 80px
+}
+
+.topera svg {
+
+  width: 40px !important;
+  height: 40px !important;
+}
+.slide {
+
+  opacity: 0;
+  transition: opacity ease-in-out 0.4s;
+}
+
+.active-anim {
+  opacity: 1;
+}
+
+.btn-slide {
+  background: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.deye{
+
+  color:red;
+
+}
+.yom{
+
+color:#828282;
+
+}
+.dey{
+
+  color:green;
+}
+.prev {
+
+  color: #eeeeee;
+  transform: translateY(-60%);
+}
+
+.next {
+
+
+  transform: translateY(-60%);
+}
+
+/*************************DEPOSIT RESPONSIVE*************/
+
+.selected {
+
+  background-color: #252859;
+  color: white;
+}
+
+.not_selected {
+  color: #252859;
+  background-color: white;
+}
+
+.not_selected .div_notes {
+  color: #828282;
+}
+
+.myInput {
+  background-color: #f1f0f0;
+  border: none;
+  border-bottom: 1px solid black;
+  width: 70%;
+}
+
+.span {
+  color: #ff9b00;
+}
+
+label {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.text-error {
+  color: red;
+}
+
+.radio input[type="radio"]+label {
+  color: grey;
+  position: relative;
+}
+
+.radio input[type="radio"]+label::before {
+  /* Outer Circle of radio button */
+  border: 1px solid grey;
+  content: ' ';
+  display: inline-block;
+  margin-right: 5px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  transition: border 0.15s ease-in-out;
+}
+
+.radio input[type="radio"]+label::after {
+  /* Inner Circle of radio button */
+  border: 0px solid #252859;
+  content: ' ';
+  background: transparent;
+  display: inline-block;
+  margin-right: 5px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  transition: border 0.15s ease-in-out;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+/* When button is active */
+.radio input[type="radio"]:checked+label::after {
+  background: #252859;
+}
+
+.radio input[type="radio"]:checked+label::before {
+  border-color: #252859;
+}
+
+.radio input[type="radio"]:checked+label {
+  color: #252859;
+}
+
+.display_none {
+
+  display: none;
+}
+
+.display_yes {
+
+  display: block;
+}
+
+.padding {
+  padding-bottom: 2rem;
+
+}
+
+.imagz {
+  z-index: -30;
+
+  height: 150px;
+}
+
+.Zindex {
+  Z-index: 50;
+  margin-top: -70px;
+  margin-left: 18rem;
+  position: fixed;
+}
+
+.Zindex svg {
+  width: 55px;
+  height: 55px;
+}
+
+.under svg {
+  width: 200px;
+  height: 200px;
+
+}
+
+.left {
+
+  margin-left: 60%;
+}
+
+@media screen and (max-width: 768px) {
+  .cont {
+    display: none;
+  }
+
+  .conti {
+
+    margin-left: 25%;
+  }
+
+  .Zindex {
+    Z-index: 50;
+    margin-top: -70px;
+    margin-left: 10rem;
+  }
+
+  .ResHome {
+    display: inline;
+
+  }
+
+  .card {
+    display: block;
+
+  }
+
+  .wallet_svg svg {
+
+    height: 70px;
+    width: 70px;
+  }
+
+  .upper-card {
+
+    color: white;
+    padding-left: 0.2rem;
+    padding-right: 0.6rem;
+
+  }
+
+  .dp_res {
+    margin-top: 10px;
+    margin-left: 12px;
+
+  }
+
+  .time {
+    float: right;
+    color: #CDCDCD;
+  }
+
+  .text_fst {
+    color: #898989;
+
+
+  }
+
+  .search {
+    background: #3C426B;
+    border-top: none;
+    padding: 1rem;
+
+  }
+
+  .back {
+    background: #3C426B;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: relative;
+
+  }
+
+  .button2 {
+    background-color: #ff9b00;
+    padding: 1rem;
+    color: white;
+    margin: 0 auto;
+    width: 10rem
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .my-Small-text {
+    font-size: 1px;
+
+  }
+
+  .ivn {
+    transform: translateY(-50%);
+    top: 50%;
+    position: absolute;
+    left: 0.75rem;
+
+  }
+
+  .top_bar {
+    display: none;
+  }
+
+  .mytop {
+    display: none;
+  }
+
+  /*Deposit*/
+
+
+}
+
+@media screen and (max-width: 1024px) {
+
+  .cont {
+    margin-top: 2rem;
+    margin-left: 35%;
+  }
+
+  .conti {
+
+    margin-left: 1%;
+  }
+}
