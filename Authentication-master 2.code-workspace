@@ -1,0 +1,51 @@
+{
+    "folders": [
+		{
+			"path": "Authentication-master 2"
+		},
+		{
+			"path": "API:auth"
+		},
+		{
+			"path": "Web_version-master 2"
+		},
+		{
+			"path": "APIaccountUser"
+		},
+		{
+			"path": "API_APP"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 8889,
+				"askForPassword": true,
+				"driver": "MySQL",
+				"username": "root",
+				"name": "auto",
+				"group": "localhost:mysql",
+				"database": "cyanse"
+			},
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 8889,
+				"name": "inhc",
+				"group": "INHC",
+				"database": "unhcenter_test",
+				"username": "root",
+				"driver": "MySQL",
+				"password": "root"
+			}
+		]
+	}
+}
