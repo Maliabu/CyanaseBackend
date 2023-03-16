@@ -118,7 +118,7 @@ class SignUp extends Component {
             onSubmit = { this.handleSubmit } >
             <
             div className = 'row justify-center p-3' > <
-            h2 className = 'text-center py-5' > API USER ACCOUNT < /h2> <
+            h2 className = 'text-center' > API USER ACCOUNT < /h2> <
             h6 > Register as an API user by filling in the following details.On submitting, details will be verified by our team and we will contact you on the way forward. < /h6><
             h6 className = 'text-warning' > < b > All fields are Required < /b>  < /
             h6 > <

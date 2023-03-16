@@ -1,14 +1,16 @@
 import React from "react";
+import '../App.css';
 const TabNavItem = ({ id, title, activeTab, setActiveTab }) => {
 
     const handleClick = () => {
         setActiveTab(id);
     };
-
-    return ( <
-        h5 onClick = { handleClick }
+    return ( < div className = "px-3 lighter" >
+        <
+        h6 onClick = { handleClick }
         className = { activeTab === id ? "active" : "" } > { title } <
-        /h5>
+        /h6> < /
+        div >
     );
 };
 export default TabNavItem;

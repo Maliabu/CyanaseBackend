@@ -1,3 +1,4 @@
+@import "//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css";
 .App {
     text-align: center;
 }
@@ -37,6 +38,53 @@
     }
 }
 
+.search-icon::-webkit-input-placeholder {
+    font-family: 'Arial', FontAwesome;
+    font-weight: normal;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block !important;
+    padding-left: 10px;
+    padding-top: 2px;
+    font-size: large !important;
+}
+
+.bg-wallet {
+    background-color: #FCFCFC!important;
+}
+
+.scroll-y {
+    overflow-y: scroll !important;
+    scroll-behavior: smooth !important;
+    position: relative !important;
+}
+
+.blue-dark {
+    background-color: #252859 !important;
+    color: whitesmoke !important;
+}
+
+.peach {
+    background-color: #FCE3C2 !important;
+    color: #282c34 !important;
+}
+
+.peach-text {
+    color: #ffb85c !important;
+}
+
+.grey-text {
+    color: #b0b0b08b;
+}
+
+.grey-back {
+    background-color: #fafafa;
+}
+
+.activeTab {
+    color: #ffb85c !important;
+}
+
 
 /* .theForm {
     background-image: url("https://img.freepik.com/free-vector/strategic-consulting-concept-illustration_114360-8994.jpg?w=740&t=st=1678295724~exp=1678296324~hmac=d43819b5a3fbe5776cd679d2f5d57cde36a046d1ee3ec3decf5cd0f54370c9b9");
@@ -44,6 +92,38 @@
     background-repeat: no-repeat;
     background-size: 50%;
 } */
+
+.dollar {
+    background-image: url("images/_.jpeg") !important;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 50%;
+}
+
+.light {
+    background-color: rgba(255, 255, 255, 0.437) !important;
+}
+
+
+/* .lighter {
+    background-image: -webkit-linear-gradient(top, #1d2565ae, #ffb85c96);
+    background-clip: text;
+    color: transparent !important;
+    cursor: pointer !important;
+} */
+
+.border-active {
+    border-color: #f7a335 !important;
+}
+
+.rounded-25 {
+    border-radius: 15px !important;
+}
+
+.active {
+    color: #f7a335 !important;
+    cursor: pointer !important;
+}
 
 .avatar {
     margin-top: 30% !important;
@@ -61,6 +141,19 @@ button {
     background-color: wheat;
     border: none !important;
     padding: 2% !important;
+}
+
+.blue-light {
+    background-color: #1b2045;
+    color: #ffffff;
+}
+
+.bg-whiter {
+    background-color: rgb(225, 225, 225) !important;
+}
+
+.bolder {
+    font-weight: 900 !important;
 }
 
 .TabContent {
