@@ -8,13 +8,13 @@ import { FaBalanceScale } from "react-icons/fa";
 const RiskProfile = ({ id, activeTab, children }) => {
     return ( <
         div > <
-        div className = "row py-5" >
+        div className = "row py-5 bg-light px-2 rounded-25" >
         <
-        div className = "col-6" >
+        div className = "col-6 bg-white rounded-25 p-2" >
         <
         img src = { Risk }
-        className = "rounded-25"
-        width = '100%'
+        width = '90%'
+        className = "m-5"
         height = '80%'
         alt = "investors" / >
         <
@@ -22,11 +22,11 @@ const RiskProfile = ({ id, activeTab, children }) => {
         div className = "col-6 p-5 mt-5 text-center" >
         <
         h4 > RISK PROFILE < /h4> <
-        div className = "row p-5 mt-5 bg-wallet shadow rounded-25" >
+        div className = "row p-5 mt-5 bg-white rounded-25" >
         <
         h6 > Investor Risk Profiler < /h6>  <
         FaBalanceScale size = "30"
-        className = 'my-5 text-primary' / >
+        className = 'my-5 text-warning' / >
         <
         p >
         The risk profiler is intended to grade and check how much you can accommodate an investment risk.The information you provide here is strictly
@@ -34,7 +34,7 @@ const RiskProfile = ({ id, activeTab, children }) => {
         for any other activities. <
         /p> < /
         div > <
-        h6 className = "py-3 px-5 mt-5 border border-primary text-primary rounded-25" > COMPLETE YOUR PROFILE < /h6> < /
+        h6 className = "py-3 px-5 mt-5 border border-warning text-warning rounded-25" > COMPLETE YOUR PROFILE < /h6> < /
         div > <
         /
         div > < /

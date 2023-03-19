@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Wallet from '../images/wallet.png';
 import { FaUserClock, FaWallet } from 'react-icons/fa';
 import ProgressBar from "@ramonak/react-progress-bar";
 import './style.scss';
+import Offcanvas from 'react-bootstrap/Offcanvas';
+import TopUp from '../Accounts/TopUp';
+import Form from 'react-bootstrap/Form';
+import Goal from '../Accounts/Goal'
 
-const Personal = ({ id, activeTab, children }) => {
+const Personal = ({ id, activeTab, children, name, ...props }) => {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const [show1, setShow1] = useState(false);
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);
+
     return ( <
         div >
         <
-        h6 className = "font-weight-bolder" > WALLET < /h6>  <
+        h6 className = "bolder grey-text" > WALLET < /h6>  <
         div className = "row" > <
-        div className = "col-9 " > <
-        div className = "row bg-wallet shadow-sm rounded-25 p-5" >
+        div className = "col-9 bg-light p-3 rounded-25 " > <
+        div className = "row bg-white rounded-25 p-5" >
         <
         div className = " px-3 text-center " >
         <
@@ -29,8 +41,35 @@ const Personal = ({ id, activeTab, children }) => {
         <
         div className = "d-flex flex-row flex justify-content-center" >
         <
-        h6 className = "px-5 py-3 mt-3 border border-warning text-warning rounded-25" >
-        Top Up < /h6> <
+        h6 className = "px-5 py-3 mt-3 border border-warning text-warning rounded-25 "
+        onClick = { handleShow } >
+        Top Up < /h6>  <
+        Offcanvas show = { show }
+        placement = "end"
+        className = "side-bar"
+        onHide = { handleClose } {...props } >
+        <
+        img src = { Wallet }
+        className = "pt-2 text-center"
+        width = '100'
+        height = '100'
+        alt = "investors" / >
+        <
+        Offcanvas.Header
+        // closeButton
+        >
+        <
+        div className = "row" > <
+        Offcanvas.Title className = "bolder" > TOP UP YOUR ACCOUNT < /Offcanvas.Title> </div >
+        <
+        /
+        Offcanvas.Header > <
+        Offcanvas.Body className = "px-5" >
+        <
+        Form validated = { true } > <
+        TopUp / > < /Form> < /
+        Offcanvas.Body > < /
+        Offcanvas > <
         h6 className = "px-5 py-3 mt-3 mx-2 border border-warning text-warning rounded-25" >
         Deposit < /h6> </div > < /
         div >
@@ -39,8 +78,8 @@ const Personal = ({ id, activeTab, children }) => {
         div >
 
         <
-        h6 className = "pt-5 font-weight-bold" > RECENT ACTIVITY < /h6>   <
-        div className = "row mt-2 px-3 bg-wallet shadow-sm rounded" >
+        h6 className = "pt-5 bolder grey-text" > RECENT ACTIVITY < /h6>   <
+        div className = "row mt-2 px-4 bg-white rounded" >
         <
         div className = "col-3" >
         <
@@ -65,7 +104,7 @@ const Personal = ({ id, activeTab, children }) => {
         /div > < /
         div >
         <
-        div className = "row mt-2 px-3 bg-wallet shadow-sm rounded" >
+        div className = "row mt-2 px-4 bg-white rounded" >
         <
         div className = "col-3" >
         <
@@ -95,20 +134,20 @@ const Personal = ({ id, activeTab, children }) => {
         <
         /
         div > <
-        div className = "col-3 rounded-25 px-3" > <
+        div className = "col-3 rounded-25 bg-light p-3" > <
         div className = "row" >
         <
-        div className = "text-start col-6 bolder" > Goals < /div> <
+        div className = "text-start col-6 bolder grey-text" > GOALS < /div> <
         div className = "text-end col-6" > < span className = "  rounded-circle blue-dark text-white px-3 py-2" > 1 < /span> < /div > < /
         div >
         <
-        div className = "p-4 bg-wallet shadow-sm rounded-25 mt-3" >
+        div className = "p-4 bg-white rounded-25 mt-3" >
         <
         div className = "d-flex flex-row flex" >
         <
-        span className = "rounded-circle border border-warning p-3" > <
-        FaUserClock className = "text-warning"
-        size = "30" / > < /span> <
+        span className = "mt-2" > <
+        FaUserClock className = "text-warning rounded-circle border border-warning p-2"
+        size = "50" / > < /span> <
         p className = "mx-3 mt-2" > < span className = "bolder" > Build a Mansion < /span> Created: 3 Aug</p >
         <
         /div> <
@@ -117,7 +156,7 @@ const Personal = ({ id, activeTab, children }) => {
         completedClassName = "barCompleted"
         maxCompleted = { 100 }
         /> <
-        p className = "text-center mt-5" > <
+        p className = "text-center mt-5 bg-light p-2 rounded" > <
         FaWallet className = "text-warning"
         size = "20" / > < span className = "bolder mx-2" > UGX < /span> 10,000 < /p >
         <
@@ -125,8 +164,17 @@ const Personal = ({ id, activeTab, children }) => {
         div >
 
         <
-        h6 className = "px-5 py-3 mt-3 border border-warning text-center text-warning rounded-25" >
-        New Goal < /h6> < /
+        h6 className = "px-5 py-3 mt-3 border border-warning text-center text-warning rounded-25"
+        onClick = { handleShow1 } >
+        New Goal < /h6>  <
+        Offcanvas show = { show1 }
+        placement = "end"
+        className = "side-barsy pt-5"
+        onHide = { handleClose1 } {...props } >
+        <
+        Form validated = { true } > <
+        Goal / > < /Form> < /
+        Offcanvas > < /
         div > < /
         div > < /
         div >

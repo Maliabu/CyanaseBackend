@@ -1,27 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Deposit from '../images/Path 80.png';
 import Networth from '../images/Path 3.png';
-import { FaBriefcase, FaWallet } from 'react-icons/fa';
 import './style.scss';
+import Modal from 'react-bootstrap/Modal';
+import Learn from '../Accounts/Learn'
 
 const Main = ({ id, activeTab, children }) => {
+    const [show1, setShow1] = useState(false);
+
+    const handleClose1 = () => setShow1(false);
+    const handleShow1 = () => setShow1(true);
     return ( <
-        div >
+        div className = "scroll-y2 p-3 rounded-25 bg-light" >
         <
-        div className = "row" >
+        div className = "row bg-white rounded-25 px-3 py-5" >
 
         <
-        h6 className = "font-weight-bolder" > YOUR STATISTICS < /h6>  <
+        h6 className = "bolder grey-text" > YOUR STATISTICS < /h6>  <
         div className = "col-9" > <
         div className = "d-flex flex-row flex py-2" >
         <
         div className = "p-5 peach rounded-25 w-50 text-center" >
         <
-        span className = "rounded-circle border border-warning p-3" > <
-        FaWallet className = "active"
-        size = "25" / > < /span> <
         h6 className = "bolder mt-4" > Deposit < /h6> <
         div className = "d-flex flex-row flex justify-content-center" > UGX <
         h1 className = "px-2" > 0.0 < /h1></div >
@@ -39,8 +41,6 @@ const Main = ({ id, activeTab, children }) => {
         <
         div className = "blue-dark rounded-25 p-5" >
         <
-        span className = "rounded-circle border p-3" > <
-        FaBriefcase size = "25" / > < /span> <
         h6 className = "bolder mt-4" > Networth < /h6> <
         div className = "d-flex flex-row flex justify-content-center" > UGX <
         h1 className = "px-2" > 0.0 < /h1></div >
@@ -48,7 +48,7 @@ const Main = ({ id, activeTab, children }) => {
         img src = { Networth }
         className = "pt-2"
         width = '100%'
-        height = '40%'
+        height = '30%'
         alt = "investors" / >
         <
         /div > < /
@@ -56,15 +56,13 @@ const Main = ({ id, activeTab, children }) => {
         <
         /div>  <
         div >
-
         <
-        h6 className = "pt-5 font-weight-bold" > DOLLAR ACCOUNT < /h6>   <
-        div className = "d-flex flex-row flex py-2" >
+        div className = "px-3 bg-light rounded-25 py-5" >
         <
-        div className = "p-5 shadow rounded-25 w-50 text-center" > <
-        span className = "rounded-circle border border-warning p-3" > <
-        FaWallet className = "text-warning"
-        size = "25" / > < /span> <
+        h6 className = "bolder grey-text" > DOLLAR ACCOUNT < /h6>   <
+        div className = "d-flex flex-row flex mt-3 my-2 dollar" >
+        <
+        div className = "p-5 light shadow-sm rounded-25 w-50 text-center" > <
         h6 className = "bolder mt-4" > Deposit < /h6>  <
         div className = "d-flex flex-row flex justify-content-center" > USD <
         h1 className = "px-2" > 0.0 < /h1></div > < /
@@ -72,21 +70,17 @@ const Main = ({ id, activeTab, children }) => {
         <
         div className = " px-3 w-50 text-center " >
         <
-        div className = "shadow  rounded-25 p-5" >
+        div className = "shadow-sm light rounded-25 p-5" >
         <
-        span className = "rounded-circle border border-warning p-3" > <
-        FaBriefcase className = "text-warning"
-        size = "25" / > < /span> <
         h6 className = "bolder mt-4" > Networth < /h6> <
         div className = "d-flex flex-row flex justify-content-center" > USD <
         h1 className = "px-2" > 0.0 < /h1></div >
         <
         /div > < /
         div > <
-        /div> 
-
-        <
-        div className = "row p-5 mt-2 shadow-sm rounded-25" >
+        /div>  < /
+        div > <
+        div className = "row p-5 mt-2 bg-white rounded-25" >
         <
         div className = "col-8 p-3" > <
         h4 className = "bolder" > Welcome to Cyanase < /h4>  <
@@ -94,10 +88,18 @@ const Main = ({ id, activeTab, children }) => {
         div > <
         div className = "col-4 p-3" >
         <
-        h6 className = "px-5 py-3 rounded-25 border border-warning text-warning text-center" > Learn More < /h6> < /
+        h6 className = "px-5 py-3 rounded-25 border border-warning text-warning text-center"
+        onClick = { handleShow1 } > Learn More < /h6> < /
         div >
         <
-        /div> < /
+        Modal show = { show1 }
+        onHide = { handleClose1 }
+        className = "modal" >
+        <
+        Learn / >
+        <
+        /Modal> < /
+        div > < /
         div >
         <
         /

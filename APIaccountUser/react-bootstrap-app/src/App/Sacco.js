@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Profile from '../images/Ellipse 182.png';
-import Mubs from '../images/Ellipse 166.png';
+import Mubs from '../images/wallet.png';
 import { FaUserClock, FaWallet } from 'react-icons/fa';
 import ProgressBar from "@ramonak/react-progress-bar";
 import './style.scss';
@@ -11,15 +11,14 @@ const Sacco = ({ id, activeTab, children }) => {
     return ( <
         div >
         <
-        h6 className = "font-weight-bolder" > YOUR SACCO GROUPS < /h6>  <
+        h6 className = "bolder grey-text" > YOUR SACCO GROUPS < /h6>  <
         div className = "row " > <
-        div className = "col-9 " > <
-        div className = "row rounded-25 shadow-sm p-5 mt-2" >
+        div className = "col-9 bg-light p-3 rounded-25 " > <
+        div className = "row bg-white rounded-25 p-5 mt-2" >
         <
         div className = " col-5" >
         <
         img src = { Profile }
-        className = "rounded-circle"
         width = '80%'
         height = '90%'
         alt = "investors" / > < /
@@ -38,32 +37,32 @@ const Sacco = ({ id, activeTab, children }) => {
         div >
 
         <
-        h6 className = "pt-5 font-weight-bold" > RECOMMENDED SACCO GROUPS < /h6>   <
-        div className = "row mt-3 px-5 py-5 shadow-sm rounded-25" >
+        h6 className = "pt-5 bolder grey-text" > RECOMMENDED SACCO GROUPS < /h6>   <
+        div className = "row mt-3 px-3 py-2 bg-white rounded-25" >
         <
-        div className = "row py-2 border-bottom" >
+        div className = "row py-2" >
         <
-        div className = "col-2" >
+        div className = "col-1" >
         <
         img src = { Mubs }
-        className = "rounded-circle"
-        width = '90%'
-        height = '90%'
+        className = "rounded-circle mt-2"
+        width = '100%'
+        height = '70%'
         alt = "investors" / >
         <
         /
         div >
         <
-        div className = "col-7" >
+        div className = "col-9" >
         <
         p className = "pt-3" > < span className = "bolder" > MUBS SACCO < /span> <
         p > Created Mar 2020 EAT <
         /p>   < /
         p > < /
         div > <
-        div className = "col-3 text-end" >
+        div className = "col-2 text-end" >
         <
-        p className = "pt-3" > 45 Members < /
+        p className = "pt-4" > 45 Members < /
         p > <
         /div >  < /
         div > < /
@@ -72,20 +71,20 @@ const Sacco = ({ id, activeTab, children }) => {
         <
         /
         div > <
-        div className = "col-3 rounded px-3" > <
+        div className = "col-3 rounded-25 bg-light p-3" > <
         div className = "row" >
         <
-        div className = "text-start col-6 bolder" > Goals < /div> <
+        div className = "text-start col-6 bolder grey-text" > GOALS < /div> <
         div className = "text-end col-6" > < span className = "  rounded-circle blue-dark text-white px-3 py-2" > 1 < /span> < /div > < /
         div >
         <
-        div className = "p-4 bg-wallet shadow-sm rounded-25 mt-3" >
+        div className = "p-4 bg-white rounded-25 mt-3" >
         <
         div className = "d-flex flex-row flex" >
         <
-        span className = "rounded-circle border border-warning p-3" > <
-        FaUserClock className = "text-warning"
-        size = "30" / > < /span> <
+        span className = "mt-2" > <
+        FaUserClock className = "text-warning rounded-circle border border-warning p-2"
+        size = "50" / > < /span> <
         p className = "mx-3 mt-2" > < span className = "bolder" > Build a Mansion < /span> Created: 3 Aug</p >
         <
         /div> <

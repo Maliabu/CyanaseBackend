@@ -24,11 +24,11 @@ const BasicExample = () => {
         setActiveTab("tab3");
     };
     return ( <
-        div className = 'row theForm' >
+        div className = 'row scroll-y2' >
         <
         div className = 'col-lg-7 px-5' >
         <
-        div className = 'd-flex flex-row p-3 bg-wallet shadow-sm rounded-25 flex' >
+        div className = 'd-flex flex-row p-3 bg-light justify-content-center rounded-25 flex' >
         <
         div className = ' py-3 px-lg-3' >
 
@@ -39,7 +39,7 @@ const BasicExample = () => {
         activeTab = { activeTab }
         setActiveTab = { setActiveTab }
         />  < /div > <
-        div className = 'px-lg-2 py-3 mx-3 border rounded-25 ' >
+        div className = 'px-lg-4 py-3 mx-3 border rounded-25 ' >
 
         <
         TabNavItem title = "Login"

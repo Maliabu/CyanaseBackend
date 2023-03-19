@@ -6,10 +6,10 @@ import { FaUniversity, FaUserCircle, FaUsers } from 'react-icons/fa';
 
 const Deposit = ({ id, activeTab, children }) => {
     return ( <
-        div >
+        div className = "bg-light rounded-25 px-3 py-5 scroll-y2" >
         <
-        h6 className = "font-weight-bolder" > DEPOSIT < /h6>  <
-        div className = "row mt-3 shadow-sm rounded-25" >
+        h6 className = "font-weight-bolder" > MAKE A DEPOSIT < /h6>  <
+        div className = "row mt-3 p-3 bg-white rounded-25" >
         <
         div className = "col-8 rounded-25 p-5 text-center" >
         <

@@ -57,6 +57,44 @@
     overflow-y: scroll !important;
     scroll-behavior: smooth !important;
     position: relative !important;
+    height: 1000px !important;
+}
+
+.scroll-y2 {
+    overflow-y: scroll !important;
+    scroll-behavior: smooth !important;
+    position: relative !important;
+    height: 800px !important;
+}
+
+.side-bar {
+    width: 40% !important;
+    padding-top: 5% !important;
+    padding-bottom: 5% !important;
+    align-items: center !important;
+}
+
+.side-barsy {
+    width: 40% !important;
+    padding-top: 10% !important;
+    padding-bottom: 10% !important;
+    align-items: center !important;
+}
+
+.modal {
+    margin-top: 7% !important;
+}
+
+.account:hover {
+    background-color: #252859 !important;
+    color: #ffb85c;
+    cursor: pointer;
+}
+
+.isActive {
+    background-color: #252859 !important;
+    color: #ffb85c;
+    cursor: pointer;
 }
 
 .blue-dark {
