@@ -1,0 +1,10 @@
+<div>
+    {% autoescape off %}
+    <p>
+        Hello {{user.first_name}} your,
+        verification code is </p>
+    <h1> {{verificationcode}} </h1>
+    <a href={% url "verify-email" user.userid%}>
+    Please activate your account</a>
+     {% endautoescape %} 
+</div>
