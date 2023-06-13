@@ -53,6 +53,7 @@ class Users:
                     "time_zone": None if profile.tmz == None else profile.tmz.pk,
                     "gender": profile.gender,
                     "phoneno": profile.phoneno,
+                    "user_type":profile.user_type,
                     "address": profile.address,
                     "birth_date": profile.birth_date,
                     "profile_picture": f"{webconfig.API_URL}/media/{profile.profile_picture}",
@@ -244,14 +245,16 @@ class Users:
             return True
         else:
             return False
+        
 
     def createAuthUser(self, request, lang):
         current_datetime = datetime.datetime.now()  
         allusers = User.objects.all().count()
         ##########################
-        username = request.data["username"]
         first_name = request.data["first_name"]
         email = request.data["email"]
+        if email:
+            username = email
         # pkg_id = request.data["pkg_id"]
         last_name = request.data["last_name"]
         password = request.data["password"]
@@ -422,3 +425,10 @@ class Users:
             password = password
         )
         return True
+    
+    def DeleteAccount(self, request, lang):
+        userid = Token.objects.get(key=request.auth).user_id
+        user = User.objects.get(pk=userid)
+        user.delete()
+        return True
+    

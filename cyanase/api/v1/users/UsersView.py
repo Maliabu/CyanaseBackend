@@ -151,9 +151,10 @@ class CreateAuthUser(ObtainAuthToken):
 
     def post(self, request, lang, *args, **kwargs):
         lang = DEFAULT_LANG if lang == None else lang
-        username = request.data["username"]
         first_name = request.data["first_name"]
         email = request.data["email"]
+        if email:
+            username = email
         # pkg_id = request.data["pkg_id"]
         last_name = request.data["last_name"]
         password = request.data["password"]
@@ -167,22 +168,22 @@ class CreateAuthUser(ObtainAuthToken):
         ##########################
         if not username:
             return Response({
-                'message': "Username is required",
+                'message': "Email is required",
                 "type": "username",
                 'success': False
-            }, status=400)
+            })
         elif len(str(username)) < 3:
             return Response({
-                'message': "Username must be greater than 3 characters",
+                'message': "Email must be greater than 3 characters",
                 "type": "username",
                 'success': False
-            }, status=400)
+            })
         elif _user.accountExists(request, username, lang):
             return Response({
-                'message': "Username already taken, please enter a unique username",
+                'message': "User already exists, please enter a unique email",
                 "type": "username",
                 'success': False
-            }, status=400)
+            })
         elif not email:
             return Response({
                 'message': "Email is required",
@@ -200,67 +201,67 @@ class CreateAuthUser(ObtainAuthToken):
                 'message': f"Account with email address {email} already exists",
                 "type": "email",
                 'success': False
-            }, status=400)
+            })
         elif str(phone_no) and _user.phoneExists(request, lang, phone_no):
             return Response({
                 'message': "Phone number already exists",
                 "type": "phone",
                 'success': False
-            }, status=400)
+            })
         elif not first_name:
             return Response({
                 'message': "First name is required",
                 "type": "first_name",
                 'success': False
-            }, status=400)
+            })
         elif not last_name:
             return Response({
                 'message': "Last name is required",
                 "type": "last_name",
                 'success': False
-            }, status=400)
+            })
         elif not password:
             return Response({
                 'message': "Password is required",
                 "type": "password",
                 'success': False
-            }, status=400)
+            })
         elif password and len(password) < 6:
             return Response({
                 'message': "Password is too short, must atleast 6 characters or above",
                 "type": "password",
                 'success': False
-            }, status=400)
+            })
         elif password and not confirmpassword:
             return Response({
                 'message': "Please confirm your password",
                 "type": "confirm_password",
                 'success': False
-            }, status=400)
+            })
         elif password and not (confirmpassword == password):
             return Response({
                 'message': "Passwords don't match",
                 "type": "password_1_2",
                 'success': False
-            }, status=400)
+            })
         elif not gender:
             return Response({
             'message': "Gender is required",
             "type": "gender",
             'success': False
-            }, status=400)
+            })
         elif not country:
             return Response({
             'message': "Country is required",
             "type": "country",
             'success': False
-            }, status=400)
+            })
         elif not birth_date:
             return Response({
             'message': "date of birth is required",
             "type": "birth_date",
             'success': False
-            }, status=400)
+            })
         else:
             user = _user.createAuthUser(request, lang)
             return Response(user)
@@ -272,11 +273,13 @@ class UpdateAuthUserPassword(APIView):
     permission_classes = [IsAuthenticated]
     http_method_names = ['post']
 
-    def post(self, request, lang, userid):
+    def post(self, request, lang):
         password = request.data["password"]
         confirmpassword = request.data["confirmpassword"]
+        user = _user.getAuthUser(request, lang)
+        userid = user["user_id"]
         if not str(userid):
-            return Response({"message": "Incomplete data request", "success": False}, status=400)
+            return Response({"message": "Incomplete data request", "success": False})
         if not password:
             return Response({
                 'message': "Password is required",
@@ -303,9 +306,19 @@ class UpdateAuthUserPassword(APIView):
                 'success': False
             })
         else:
-            user = _user.UpdateAuthUserPassword(request, lang, userid)
+            user = _user.UpdateAuthUserPassword(request, lang, password, userid)
             return Response({"message": "Password updated successfuly", "success": True}, status=200)
 
+
+class DeleteUserAccount(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get']
+
+    def get(self, request, lang):
+        user = _user.DeleteAccount(request, lang)
+        if user:
+            return Response({"message": "Account deleted successfuly", "success": True}, status=200)
 
 class UpdateAuthUser(APIView):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
@@ -318,12 +331,14 @@ class UpdateAuthUser(APIView):
         return Response({
             'message': "Username already exists, please choose another name",
             'success': False
-        }, status=400)
+        }
+        # , status = 400 alters the response format
+        )
 
     def post(self, request, lang, userid):
         lang = DEFAULT_LANG if lang == None else lang
         if not userid:
-            return Response({"message": "Incomplete data request", "success": False}, status=400)
+            return Response({"message": "Incomplete data request", "success": False})
 
         request_object = request.body.decode("utf-8")
         if request_object:
@@ -331,7 +346,7 @@ class UpdateAuthUser(APIView):
             if len(data) > 0:
                 if "username" in data or "email" in data or "is_superuser" in data or "security_group_id" in data or "first_name" in data or "last_name" in data or "profile_id" in data or "gender" in data or "phoneno" in data or "title" in data or "id_number" in data or "bio" in data or "location" in data or "location" in data or "birth_date" in data or "profile_picture" in data or "usignature" in data or "is_staff" in data or "is_active" in data:
                     if not data["username"] and not data["email"] and not str(data["is_superuser"]) and not str(data["security_group_id"]) and not data["first_name"] and not data["last_name"] and not str(data["profile_id"]) and not data["gender"] and not str(data["phoneno"]) and not data["title"] and not data["id_number"] and not data["bio"] and not data["location"] and not data["location"] and not str(data["birth_date"]) and not data["profile_picture"] and not data["usignature"] and not str(data["is_staff"]) and not str(data["is_active"]):
-                        return Response({"message": "Can't update when all fields are missing", "success": False}, status=400)
+                        return Response({"message": "Can't update when all fields are missing", "success": False})
                     else:
                         email = data["email"]
                         if email and not _helper.isEmailValid(email):
@@ -362,7 +377,7 @@ class ResendVerificationCode(ObtainAuthToken):
             return Response({
                 'message': "Incomplete data request",
                 'success': False
-            }, status=400)
+            })
         elif not _helper.isEmailValid(request.GET["email"]):
             return Response({
                 'message': "Invalid email address",
@@ -372,7 +387,7 @@ class ResendVerificationCode(ObtainAuthToken):
             return Response({
                 'message': f"Account with email {request.GET['email']} doesn't exist",
                 'success': False
-            }, status=400)
+            })
         else:
             response = _user.ResendVerificationCode(
                 request, lang, request.GET["email"])

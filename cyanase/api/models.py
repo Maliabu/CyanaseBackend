@@ -95,6 +95,39 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.userprofile.save()
 
+class NextOfKin(models.Model):
+    first_name = models.CharField(verbose_name="first name",default="first name", max_length=200)
+    last_name = models.CharField(verbose_name="last name", default="last name", max_length=200)
+    phone = models.IntegerField(verbose_name="phone", default="+256 000 000 000")
+    email = models.EmailField(verbose_name="email", default="nextofkin@gmail.com")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return "%s" % self.first_name
+    
+
+class RiskProfile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    qn1 = models.CharField(max_length=200, default="saving", verbose_name="objectives")
+    qn2 = models.CharField(max_length=200, default="less_than_year", verbose_name="horizon")
+    qn3 = models.CharField(max_length=200, default="treasuries", verbose_name="past investing")
+    qn4 = models.CharField(max_length=200, default="less_ten_percent", verbose_name="portfolio max loss")
+    qn5 = models.CharField(max_length=200, default="least", verbose_name="capital")
+    qn6 = models.CharField(max_length=200, default="employment", verbose_name="funds source")
+    qn7 = models.CharField(max_length=200, default="guaranteed_returns", verbose_name="goals")
+    qn8 = models.CharField(max_length=200, default="A", verbose_name="profit or loss")
+    qn9 = models.CharField(max_length=200, default="no", verbose_name="risk")
+    qn10 = models.CharField(max_length=200, default="no", verbose_name="future investing")
+    qn11 = models.CharField(max_length=200, default="comfortable", verbose_name="inflation impact")
+    created = models.DateTimeField(auto_now_add=True)
+    score = models.IntegerField(verbose_name="score", default=0)
+    risk_analysis = models.CharField(max_length=200, verbose_name="analysis",default="Incomplete Risk profile")
+    investment_option = models.CharField(max_length=200,verbose_name="investment option", default="Tbills")
+    is_complete = models.BooleanField(default=False, verbose_name="status")
+    
+    def __str__(self):
+        return "%s" % self.user.first_name
 
 class MerchantApp(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -104,8 +137,7 @@ class MerchantApp(models.Model):
 
     def __str__(self):
         return "%s | %s| %s" % (str(self.user), self.app_name, self.api_key)
-
-
+    
 class Currency(models.Model):
     country = models.ForeignKey(
         SupportedCountry, on_delete=models.CASCADE, null=True, blank=True)

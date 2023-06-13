@@ -8,7 +8,7 @@ from rest_framework.views import APIView
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from .v1.users.Users import Users
-from .services import Deposits, Goals
+from .services import Deposits, Goals, NextOfKins, RiskProfiles
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -16,6 +16,8 @@ DEFAULT_LANG = "en"
 _user = Users()
 _deposit = Deposits()
 _goal = Goals()
+_nextOfKin = NextOfKins()
+_riskprofile = RiskProfiles()
 
 class index(APIView):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
@@ -191,6 +193,8 @@ class GetGoalById(APIView):
         lang = DEFAULT_LANG if lang == None else lang
         goal = _goal.getGoalById(request,lang,goalid)
         return Response(goal)
+    
+    
 class CreateGoal(APIView):
     authentication_classes = [SessionAuthentication,TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -198,13 +202,17 @@ class CreateGoal(APIView):
     
     def post(self, request, lang, *args, **kwargs):
         user = _user.getAuthUser(request,lang)
-        deposit = _deposit.createDeposit(request,lang,user)
         lang = DEFAULT_LANG if lang == None else lang
         goal_name = request.data["goal_name"]
         goal_period = request.data["goal_period"]
         goal_amount = request.data["goal_period"]
         deposit_type = request.data["deposit_type"]
         deposit_reminder_day = request.data["deposit_reminder_day"]
+        payment_means = request.data["payment_means"]
+        deposit_category = request.data["deposit_category"]
+        deposit_amount = request.data["deposit_amount"]
+        currency = request.data["currency"]
+        account_type = request.data["account_type"]
         if not goal_name:
             return{
                 "message": "This field is required",
@@ -229,8 +237,40 @@ class CreateGoal(APIView):
                 "success": False,
                 "type": "deposit type"
             }
+        elif not payment_means:
+            return Response({
+                'message': "This field is required",
+                "type": "payment_means",
+                'success': False
+            }, status=400)
+        elif not account_type:
+            return Response({
+                'message': "This field is required",
+                "type": "account_type",
+                'success': False
+            })
+        elif not deposit_category:
+            return Response({
+                'message': "This field is required",
+                "type": "deposit_category",
+                'success': False
+            })
+        elif not deposit_amount:
+            return Response({
+                'message': "This field is required",
+                "type": "deposit_amount",
+                'success': False
+            })
+        elif not currency:
+            return Response({
+                'message': "This field is required",
+                "type": "currency",
+                'success': False
+            })
         else:
-            goal = _goal.createGoal(request, lang,user,deposit)
+            goal = _goal.createGoal(request, lang,user)
+            goalid = goal["goalid"]
+            deposit = _deposit.depositToGoal(request,lang,user,goalid)
             return Response(goal)
         
 class GetGoalsByAuthUser(APIView):
@@ -245,3 +285,158 @@ class GetGoalsByAuthUser(APIView):
         goal = _goal.getAllUserGoals(request,lang,user)
         return Response(goal)
     
+class AddNextOfKin(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['post']
+    
+    def post(self,request,lang,*args, **kwargs):
+        user = _user.getAuthUser(request,lang)
+        lang = DEFAULT_LANG if lang == None else lang
+        first_name = request.data["first_name"]
+        last_name = request.data["last_name"]
+        email = request.data["email"]
+        phone = request.data["phone"]
+        
+        if not first_name:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not last_name:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not email:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not phone:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        else:
+            nextOfKin = _nextOfKin.addNextOfKin(request,lang,user)
+            return Response(nextOfKin)
+        
+class GetNextOfKinById(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get']
+    
+    def get(self,request,lang,nextOfKinId):
+        lang = DEFAULT_LANG if lang == None else lang
+        nextOfKin = _nextOfKin.getNextOfKinById(request,lang,nextOfKinId)
+        return Response(nextOfKin)
+
+class GetNextOfKin(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get']
+    
+    def get(self,request,lang):
+        lang = DEFAULT_LANG if lang == None else lang
+        user = _user.getAuthUser(request,lang)
+        nextOfKin = _nextOfKin.getNextOfKin(request,lang,user)
+        return Response(nextOfKin)
+    
+
+class AddRiskProfile(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['post']
+    
+    def post(self,request,lang,*args, **kwargs):
+        user = _user.getAuthUser(request,lang)
+        lang = DEFAULT_LANG if lang == None else lang
+        qn1 = request.data["qn1"]
+        qn2 = request.data["qn2"]
+        qn3 = request.data["qn3"]
+        qn4 = request.data["qn4"]
+        qn5 = request.data["qn5"]
+        qn6 = request.data["qn6"]
+        qn7 = request.data["qn7"]
+        qn8 = request.data["qn8"]
+        qn9 = request.data["qn9"]
+        qn10 = request.data["qn10"]
+        qn11 = request.data["qn11"]
+        score = request.data["score"]
+        investment_option = request.data["investment_option"]
+        risk_analysis = request.data["risk_analysis"]
+        if not qn1:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn2:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn3:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn4:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn5:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn6:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn7:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn8:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn9:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn10:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not qn11:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        elif not risk_analysis:
+            return{
+                "message": "This field is required",
+                "success": False
+            }
+        else:
+            riskprofile = _riskprofile.addRiskProfile(request,lang,user)
+            return Response(riskprofile)
+        
+class GetRiskProfile(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    http_method_names = ['get']
+    
+    def get(self,request,lang):
+        lang = DEFAULT_LANG if lang == None else lang
+        user = _user.getAuthUser(request,lang)
+        riskprofile = _riskprofile.getRiskProfile(request,lang,user)
+        return Response(riskprofile)
